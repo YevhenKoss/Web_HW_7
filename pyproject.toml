@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "web-hw-7"
+version = "0.1.0"
+description = ""
+authors = ["YevhenKoss <kossik89@gmail.com>"]
+readme = "README.md"
+packages = [{include = "web_hw_7"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+sqlalchemy = "^2.0.8"
+psycopg2 = "^2.9.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
