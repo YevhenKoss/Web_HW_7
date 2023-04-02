@@ -21,6 +21,21 @@ typing-extensions = ">=4"
 tz = ["python-dateutil"]
 
 [[package]]
+name = "faker"
+version = "18.3.2"
+description = "Faker is a Python package that generates fake data for you."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "Faker-18.3.2-py3-none-any.whl", hash = "sha256:f3299679a6b23409cfe69774bbd1148324a05bd38bda041da6c302e618d7d4a0"},
+    {file = "Faker-18.3.2.tar.gz", hash = "sha256:a000bba893ea502cea66d06acf14e01655a2289e4904de80faf9dbe880fa1a39"},
+]
+
+[package.dependencies]
+python-dateutil = ">=2.4"
+
+[[package]]
 name = "greenlet"
 version = "2.0.2"
 description = "Lightweight in-process concurrent programming"
@@ -198,6 +213,33 @@ files = [
 ]
 
 [[package]]
+name = "python-dateutil"
+version = "2.8.2"
+description = "Extensions to the standard Python datetime module"
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+files = [
+    {file = "python-dateutil-2.8.2.tar.gz", hash = "sha256:0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86"},
+    {file = "python_dateutil-2.8.2-py2.py3-none-any.whl", hash = "sha256:961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9"},
+]
+
+[package.dependencies]
+six = ">=1.5"
+
+[[package]]
+name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+files = [
+    {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
+    {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
+]
+
+[[package]]
 name = "sqlalchemy"
 version = "2.0.8"
 description = "Database Abstraction Library"
@@ -287,7 +329,23 @@ files = [
     {file = "typing_extensions-4.5.0.tar.gz", hash = "sha256:5cb5f4a79139d699607b3ef622a1dedafa84e115ab0024e0d9c044a9479ca7cb"},
 ]
 
+[[package]]
+name = "uri"
+version = "2.0.1"
+description = "A type to represent, query, and manipulate a Uniform Resource Identifier."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "uri-2.0.1-py2.py3-none-any.whl", hash = "sha256:df7df5653c8d38cf8a394db0d86728fcbfc6b4ecc62522a7972e078c1cace963"},
+    {file = "uri-2.0.1.tar.gz", hash = "sha256:b56fa1ca7fdbb43d919d921c360a145358529d5430dec90d46a7b902179529b9"},
+]
+
+[package.extras]
+development = ["pre-commit", "pytest", "pytest-cov", "pytest-flakes", "pytest-isort"]
+http = ["requests"]
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "a9d538e34a7292575f532f2e017edf2f4ab6603aed6d78b68430a8affcdf972d"
+content-hash = "dec3459e76b2f3f2b05a0e40b1769b7f80e04d7df07fd079bb6517ce3f4c39f4"
