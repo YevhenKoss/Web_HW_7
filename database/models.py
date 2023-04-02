@@ -1,5 +1,6 @@
 from sqlalchemy import Column, String, Integer, ForeignKey, func, Date
 from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.ext.hybrid import hybrid_property
 
 Base = declarative_base()
 
@@ -10,6 +11,10 @@ class Teacher(Base):
     first_name = Column(String(100))
     last_name = Column(String(100))
 
+    @hybrid_property
+    def fullname(self):
+        return self.first_name + " " + self.last_name
+
 
 class Student(Base):
     __tablename__ = "students"
@@ -18,6 +23,10 @@ class Student(Base):
     last_name = Column(String(100))
     group_id = Column(Integer, ForeignKey("groups.id"))
     group = relationship("Group")
+
+    @hybrid_property
+    def fullname(self):
+        return self.first_name + " " + self.last_name
 
 
 class Group(Base):

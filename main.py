@@ -2,49 +2,59 @@ import argparse
 
 from database.repository import *
 
-parser = argparse.ArgumentParser(description='Todo APP')
-parser.add_argument('--action', help='Command: create, update, list, remove')
-parser.add_argument('--id')
-parser.add_argument('--title')
-parser.add_argument('--desc')
-parser.add_argument('--login')
+parser = argparse.ArgumentParser(description="DB query")
+parser.add_argument("--action", help="Command: query_1, query_2, query_3, query_4, query_5, "
+                                     "query_6, query_7, query_8, query_9, query_10, query_12")
+
 
 arguments = parser.parse_args()
-# print(arguments)
 my_arg = vars(arguments)
-# print(my_arg)
-
-action = my_arg.get('action')
-title = my_arg.get('title')
-description = my_arg.get('desc')
-_id = my_arg.get('id')
-login = my_arg.get('login')
+action = my_arg.get("action")
 
 
-def main(user):
+def main():
     match action:
-        case 'create':
-            create_todo(title, description, user)
-        case 'list':
-            todos = get_todos(user)
-            for t in todos:
-                print(t.id, t.title, t.description)
-        case 'update':
-            t = update_todo(_id, title, description, user)
-            if t:
-                print(t.id, t.title, t.description)
-            else:
-                print('Not found: 404')
-
-        case 'remove':
-            r = remove_todo(_id, user)
-            print(f'Remove count: {r}')
+        case "query_1":
+            res = query_one()
+            for _ in res:
+                print(_)
+        case "query_2":
+            print(query_two())
+        case "query_3":
+            res = query_three()
+            for _ in res:
+                print(_)
+        case "query_4":
+            print(query_four())
+        case "query_5":
+            res = query_five()
+            for _ in res:
+                print(_)
+        case "query_6":
+            res = query_six()
+            for _ in res:
+                print(_)
+        case "query_7":
+            res = query_seven()
+            for _ in res:
+                print(_)
+        case "query_8":
+            res = query_eight()
+            for _ in res:
+                print(_)
+        case "query_9":
+            res = query_nine()
+            for _ in res:
+                print(_)
+        case "query_10":
+            res = query_ten()
+            for _ in res:
+                print(_)
+        case "query_12":
+            res = query_twelve()
+            for _ in res:
+                print(_)
 
 
 if __name__ == '__main__':
-    user = get_user(login)
-    password = input("Password: ")
-    if password == user.password:
-        main(user)
-    else:
-        print("Wrong password!")
+    main()

@@ -7,10 +7,7 @@ from sqlalchemy import select
 from database.db import session
 from database.models import Teacher, Student, Discipline, Grade, Group
 
-'''
-Функція отримання списку дат
-'''
-
+# Функція отримання списку дат
 
 def date_range(start: date, end: date) -> list:
     result = []
@@ -21,13 +18,8 @@ def date_range(start: date, end: date) -> list:
         current_date += timedelta(1)
     return result
 
-
-'''
-Функція створення БД
-'''
-
-'''Функція створення фейкових даних та заповнення ними БД'''
-
+# Функція створення БД
+# Функція створення фейкових даних та заповнення ними БД
 
 def fill_data():
     # Не всі дані будуть динамічними. Створюємо списки предметів та груп
