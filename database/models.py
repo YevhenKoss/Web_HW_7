@@ -1,27 +1,36 @@
-from sqlalchemy import Column, String, Integer, ForeignKey, DateTime, func
+from sqlalchemy import Column, String, Integer, ForeignKey, DateTime, func, event, and_, Date
 from sqlalchemy.orm import relationship, declarative_base
-
-from database.db import engine
 
 Base = declarative_base()
 
 
-class User(Base):
-    __tablename__ = "users"
+class Teacher(Base):
+    __tablename__ = "teachers"
     id = Column(Integer, primary_key=True)
-    login = Column(String(50), unique=True)
-    password = Column(String(50))
+    first_name = Column(String(100))
+    last_name = Column(String(100))
+    email = Column(String(100))
+    phone = Column(String(100))
+    address = Column(String(150))
+    start_work = Column(Date, nullable=False)
+    students = relationship("Student", secondary="teachers_to_students", back_populates="teachers")
 
 
-class Todo(Base):
-    __tablename__ = "todos"
+class Students(Base):
+    __tablename__ = "students"
     id = Column("id", Integer, primary_key=True)
-    title = Column("title", String(150), nullable=False, index=True)
-    description = Column("description", String(300), nullable=False, index=True)
-    created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now())
-    user_id = Column("user_id", Integer, ForeignKey("users_id"))
-    user = relationship("User")
+    first_name = Column(String(100))
+    last_name = Column(String(100))
+    email = Column(String(100))
+    phone = Column(String(100))
+    address = Column(String(150))
+    teachers = relationship("Teacher", secondary="teachers_to_students", back_populates="students")
 
 
-Base.metadata.create_all(engine)
+class TeacherStudent(Base):
+    __tablename__ = "teachers_to_students"
+    id = Column("id", Integer, primary_key=True)
+    teacher_id = Column(Integer, ForeignKey("teachers.id", ondelete="CASCADE"))
+    student_id = Column(Integer, ForeignKey("students.id", ondelete="CASCADE"))
+
+

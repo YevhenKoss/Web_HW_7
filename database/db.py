@@ -18,3 +18,5 @@ uri = f"postgresql://{username}:{password}@{domain}:{port}/{database}"
 
 engine = create_engine(uri, echo=True)
 DBSession = sessionmaker(bind=engine)
+
+session = DBSession()

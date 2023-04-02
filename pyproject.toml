@@ -10,6 +10,7 @@ packages = [{include = "web_hw_7"}]
 python = "^3.11"
 sqlalchemy = "^2.0.8"
 psycopg2 = "^2.9.5"
+alembic = "^1.10.2"
 
 
 [build-system]
