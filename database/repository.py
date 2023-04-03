@@ -113,7 +113,8 @@ def query_eight():
     # GROUP BY d.id
     # ORDER BY avg_grade DESC;
     result = session.query(Teacher.fullname, Discipline.name, func.round(func.avg(Grade.grade), 3).label("avg_grade")) \
-        .select_from(Grade).join(Discipline).join(Teacher).filter(Teacher.id == 4).group_by(Discipline.id) \
+        .select_from(Grade).join(Discipline).join(Teacher).filter(Teacher.id == 4).group_by(Teacher.fullname,
+                                                                                            Discipline.name) \
         .order_by(desc("avg_grade")).all()
     return result
 
@@ -127,7 +128,7 @@ def query_nine():
     # WHERE s.id = 50
     # GROUP BY d.id
     result = session.query(Student.fullname, Discipline.name).select_from(Grade).join(Discipline).join(Student) \
-        .filter(Student.id == 1).group_by(Discipline.id).all()
+        .filter(Student.id == 1).group_by(Discipline.name, Student.fullname).all()
     return result
 
 
@@ -141,8 +142,13 @@ def query_ten():
     # WHERE s.id = 1 AND t.id = 1
     # GROUP BY d.id
     result = session.query(Student.fullname, Discipline.name, Teacher.fullname).select_from(Grade).join(Discipline) \
-        .join(Student).join(Teacher).filter(and_(Student.id == 1, Teacher.id == 1)).group_by(Discipline.id).all()
+        .join(Student).join(Teacher).filter(and_(Student.id == 1, Teacher.id == 1)) \
+        .group_by(Discipline.name, Teacher.fullname, Student.fullname).all()
     return result
+
+
+def query_eleven():
+    return "Не зробив :)"
 
 
 def query_twelve():
