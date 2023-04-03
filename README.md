@@ -76,5 +76,5 @@ stud_id - id студента;
 
 №12
 
-    py main.py --action query_10 --disc_id 1 --group_id 1
+    py main.py --action query_12 --disc_id 1 --group_id 1
 
