@@ -10,12 +10,14 @@ parser.add_argument("--group_id")
 parser.add_argument("--teach_id")
 parser.add_argument("--stud_id")
 
-
-
-
 arguments = parser.parse_args()
 my_arg = vars(arguments)
+
 action = my_arg.get("action")
+disc_id = my_arg.get("disc_id")
+teach_id = my_arg.get("teach_id")
+group_id = my_arg.get("group_id")
+stud_id = my_arg.get("stud_id")
 
 
 def main():
@@ -27,10 +29,10 @@ def main():
                 print(_)
         case "query_2":
             print("Cтудента із найвищим середнім балом з певного предмета")
-            print(query_two())
+            print(query_two(disc_id))
         case "query_3":
             print("Cередній бал у групах з певного предмета")
-            res = query_three()
+            res = query_three(disc_id)
             for _ in res:
                 print(_)
         case "query_4":
@@ -38,32 +40,32 @@ def main():
             print(query_four())
         case "query_5":
             print("Kурси, які читає певний викладач")
-            res = query_five()
+            res = query_five(teach_id)
             for _ in res:
                 print(_)
         case "query_6":
             print("Cписок студентів у певній групі")
-            res = query_six()
+            res = query_six(group_id)
             for _ in res:
                 print(_)
         case "query_7":
             print("Oцінки студентів у окремій групі з певного предмета")
-            res = query_seven()
+            res = query_seven(group_id, disc_id)
             for _ in res:
                 print(_)
         case "query_8":
             print("Cередній бал, який ставить певний викладач зі своїх предметів")
-            res = query_eight()
+            res = query_eight(teach_id)
             for _ in res:
                 print(_)
         case "query_9":
             print("Cписок курсів, які відвідує певний студент")
-            res = query_nine()
+            res = query_nine(stud_id)
             for _ in res:
                 print(_)
         case "query_10":
             print("Kурси, які певному студенту читає певний викладач")
-            res = query_ten()
+            res = query_ten(stud_id, teach_id)
             for _ in res:
                 print(_)
         case "query_11":
@@ -71,7 +73,7 @@ def main():
             print(query_eleven())
         case "query_12":
             print("Оцінки студентів у певній групі з певного предмета на останньому занятті")
-            res = query_twelve()
+            res = query_twelve(disc_id, group_id)
             for _ in res:
                 print(_)
 
